@@ -20,3 +20,94 @@ This repository implements **periodic partial reset** on LSTM to improve adaptat
 > ⚠️ On the real Student Lifestyle dataset, the method does not improve performance, highlighting the need for per‑dataset parameter tuning.
 
 ## 🗂️ Repository Structure
+thesis-inertia-lstm-reset/
+├── data/ # (optional) dataset files
+├── experiments/ # main experiment scripts
+│ ├── main_tesis.py # synthetic data experiment (main result)
+│ └── main_real_student.py # real‑data validation (Student Lifestyle)
+├── src/ # core modules
+│ ├── data_generator.py # synthetic data generation (sudden drift)
+│ ├── model.py # LSTM + periodic reset logic
+│ └── preprocessing.py # real‑data loader and mapper
+├── dashboard/ # Streamlit interactive dashboard
+│ └── app.py
+├── results/ # output CSV and plots
+│ ├── boxplot_tesis.png
+│ └── boxplot_real_data.png
+├── thesis/ # thesis document (PDF)
+├── requirements.txt # Python dependencies
+├── .gitignore
+└── README.md
+
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/afiqandico13/thesis-inertia-lstm-reset.git
+cd thesis-inertia-lstm-reset
+
+2. Create a virtual environment and install dependencies
+bash
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+# or
+venv\Scripts\activate       # Windows
+
+pip install -r requirements.txt
+3. Run the main synthetic experiment
+bash
+cd experiments
+python main_tesis.py
+This runs 42 iterations (714 subject‑samples) and produces:
+
+../results/tesis_results.csv (MSE values)
+
+../results/boxplot_tesis.png (comparison boxplot)
+
+4. Run the real‑data validation (Student Lifestyle dataset)
+bash
+cd experiments
+python main_real_student.py
+Make sure you have downloaded the dataset from Kaggle and placed student_lifestyle_dataset.csv inside the data/ folder.
+
+5. Launch the interactive dashboard
+bash
+streamlit run dashboard/app.py
+The dashboard lets you:
+
+Generate synthetic data or upload your own CSV
+
+Adjust reset ratio and frequency
+
+Compare baseline vs proposed predictions in real time
+
+📈 Visual Results
+Synthetic data (sudden drift)	Student Lifestyle (real)
+https://results/boxplot_tesis.png	https://results/boxplot_real_data.png
+Proposed model (orange) yields much lower MSE on synthetic data. On real data, both models perform similarly.
+
+🧠 Key Parameters
+Parameter	Value	Rationale
+Reset ratio	3%	Small enough to avoid catastrophic forgetting, large enough to escape local minima
+Reset frequency	every 15 epochs	One reset in a 20‑epoch training, giving time to adapt afterward
+LSTM hidden size	32	Lightweight, runs on CPU laptop
+Window size	5 days	Uses one week of past data (excluding weekend)
+🌐 Live Demo
+Try the interactive dashboard online:
+https://static.streamlit.io/badges/streamlit_badge_black_white.svg
+
+No installation required – just click the badge!
+
+📜 License
+This project is licensed under the MIT License – see the LICENSE file for details.
+
+🙏 Acknowledgements
+Inspired by Newton’s law of inertia and Kuppens et al. (2010) on emotional inertia.
+
+Dataset: Student Lifestyle Dataset from Kaggle (steve1215rogg/student-lifestyle-dataset).
+
+Thanks to the open‑source community for PyTorch, Streamlit, and River.
+
+📧 Contact
+For questions or collaboration opportunities, please open an issue on GitHub.
