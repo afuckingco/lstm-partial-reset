@@ -1,106 +1,106 @@
+```markdown
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CPU-orange)](https://pytorch.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
 
 # Stock Price Prediction with Periodic Partial Reset LSTM
 
 > **Portfolio Project** – Adapting to sudden market changes using periodic weight reset.
 
-This repository implements **periodic partial reset** on LSTM to handle **sudden concept drift** in stock price prediction. The method randomly resets **3% of weights every 15 epochs**, helping the model adapt to regime changes.
+This repository implements **periodic partial reset** on LSTM to handle **sudden concept drift** in stock price prediction. Inspired by Newton’s law of inertia and psychological inertia, the method randomly resets **3% of weights every 15 epochs**, helping the model escape local minima during market regime shifts.
 
 ## 📊 Key Results (AAPL stock with synthetic drift)
 
 | Model | MSE | Improvement |
 |-------|-----|-------------|
 | Baseline (no reset) | 75528.23 | – |
-| Proposed (periodic reset) | 76112.83 | **-0.77%** (slight degradation) |
+| Proposed (periodic reset) | 76112.83 | **-0.77%** |
 
-> ⚠️ On this synthetic drift scenario, the periodic reset did not improve performance, highlighting the need for per‑dataset parameter tuning.
+> ⚠️ On this synthetic drift scenario, the periodic reset did **not** improve performance. This negative result is still valuable – it highlights the sensitivity of the method to parameter choices and dataset characteristics. With proper tuning (e.g., reset ratio 1%, frequency 5 epochs), the method might yield positive gains.
 
 ## 🗂️ Repository Structure
-stock-reset-lstm/
-├── data/ # (empty, for dataset)
-├── experiments/ # main experiment script
-├── src/ # data_loader, model, utils
-├── dashboard/ # Streamlit app
-├── results/ # output CSV and plots
-└── requirements.txt
 
-text
+```
+stock-reset-lstm/
+├── data/                 # (empty) place for CSV datasets
+├── experiments/          # main experiment script (main_stock.py)
+├── src/                  # core modules
+│   ├── data_loader.py    # download & preprocess stock data
+│   ├── model.py          # LSTM + periodic reset logic
+│   └── utils.py          # metrics, visualization
+├── dashboard/            # Streamlit interactive dashboard
+│   └── app.py
+├── results/              # output CSV and plots (auto-generated)
+├── requirements.txt      # Python dependencies
+├── .gitignore
+└── README.md
+```
 
 ## 🚀 Getting Started
 
+### 1. Clone the repository
 ```bash
 git clone https://github.com/afiqandico13/stock-reset-lstm.git
 cd stock-reset-lstm
+```
+
+### 2. Create a virtual environment and install dependencies
+```bash
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+# or
+venv\Scripts\activate       # Windows
+
 pip install -r requirements.txt
+```
+
+### 3. Run the main experiment
+```bash
 cd experiments
 python main_stock.py
-🌐 Live Demo (Streamlit)
-bash
+```
+This will download AAPL stock data (2020–2024), inject a synthetic drift at 70% of the series, and compare baseline vs periodic reset LSTM over 30 bootstrap iterations.
+
+### 4. Launch the interactive dashboard
+```bash
 streamlit run dashboard/app.py
-📜 License
-MIT
+```
+The dashboard lets you choose any ticker, adjust reset parameters, and see predictions in real time.
 
-text
+## 📈 Visual Results
 
-**Edit README langsung di GitHub** (klik file → pensil) atau di lokal lalu push lagi.
+![Boxplot](results/boxplot_stock.png)  
+*Boxplot of MSE over 30 iterations – baseline vs proposed.*
 
-### 3. 🏷️ Buat GitHub Release (v1.0.0)
+## 🧠 Key Parameters
 
-- Buka repositori di GitHub → klik **Releases** → **Create a new release**.
-- Tag version: `v1.0.0`
-- Title: `Initial release – periodic reset LSTM for stock prediction`
-- Description: ringkasan hasil (sama seperti di README).
-- Klik **Publish release**.
+| Parameter | Value | Rationale |
+|----------|-------|-----------|
+| Reset ratio | 3% | Small enough to avoid catastrophic forgetting, adjustable |
+| Reset frequency | every 15 epochs | One reset in a 20‑epoch training |
+| LSTM hidden size | 32 | Lightweight, runs on CPU |
+| Window size | 5 days | Uses one week of past prices |
 
-### 4. 🌐 (Opsional) Deploy Dashboard ke Streamlit Cloud
+## 🌐 Live Demo
 
-Jika ingin dashboard bisa diakses online:
+Try the interactive dashboard online (after Streamlit Cloud deployment):  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
 
-- Buka [share.streamlit.io](https://share.streamlit.io)
-- Login dengan GitHub.
-- Klik **New app** → pilih repo `afiqandico13/stock-reset-lstm` → branch `main` → file `dashboard/app.py`.
-- Deploy. Anda akan mendapat URL publik (contoh: `https://stock-reset-lstm.streamlit.app`).
-- Tempelkan badge ke README.
+No installation required – just click the badge!
 
-### 5. 📈 Analisis Hasil (Jika Ingin Perbaiki Performa)
+## 📜 License
 
-Hasil MSE Anda menunjukkan **proposed lebih buruk** (improvement -0.77%). Ini adalah temuan. Anda bisa:
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
-- **Optimasi parameter reset** (coba rasio 1% atau frekuensi 5 epoch).
-- **Hapus synthetic drift** dan amati pada data asli.
-- **Bandingkan dengan model lain** (ARIMA, Prophet).
+## 🙏 Acknowledgements
 
-Tuliskan di README sebagai "lesson learned" – justru menarik untuk portofolio.
-
-### 6. 🔗 Tambahkan ke Profil GitHub & LinkedIn
-
-- **Pin repositori** di profil GitHub agar terlihat di halaman utama.
-- **Buat postingan di LinkedIn** dengan ringkasan proyek, tautan GitHub, dan screenshot.
-- **Masukkan link ke CV** (jika melamar kerja).
+- Inspired by Newton’s law of inertia and Kuppens et al. (2010) on emotional inertia.
+- Stock data from Yahoo Finance (yfinance library).
+- Built with PyTorch, Streamlit, and scikit-learn.
 
 ---
 
-## ✅ Checklist Final Proyek Portofolio
-
-- [x] Kode lengkap dan berjalan.
-- [x] Repositori publik di GitHub.
-- [x] README profesional (badge, struktur, cara pakai).
-- [x] Hasil eksperimen (positif atau negatif) disajikan jujur.
-- [x] Dashboard Streamlit (lokal atau cloud).
-- [ ] (Opsional) GitHub Release v1.0.0.
-- [ ] (Opsional) Deploy dashboard ke Streamlit Cloud.
-
----
-
-## 🚀 Kesimpulan
-
-Anda telah berhasil **menyelesaikan proyek portofolio kedua** dengan struktur dan kualitas yang sama baiknya dengan tesis pertama. Proyek ini menunjukkan kemampuan Anda dalam:
-
-- Implementasi LSTM dengan mekanisme reset periodik.
-- Eksperimen time series dengan concept drift.
-- Pengembangan dashboard interaktif.
-- Dokumentasi dan publikasi kode.
-
-**Selamat! 🎉** Proyek ini bisa menjadi nilai tambah besar saat melamar kerja atau studi lanjut. Jika ingin membuat proyek ketiga (misal prediksi energi, kualitas udara), saya siap bantu. Ada yang ingin ditanyakan lagi?
+**📧 Contact**  
+For questions or collaboration, please open an issue on GitHub.
+```
