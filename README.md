@@ -1,7 +1,7 @@
+```markdown
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CPU-orange)](https://pytorch.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
 
 # Stock Price Prediction with Periodic Partial Reset LSTM
 
@@ -19,20 +19,22 @@ This repository implements **periodic partial reset** on LSTM to handle **sudden
 > ⚠️ On this synthetic drift scenario, the periodic reset did **not** improve performance. This negative result is still valuable – it highlights the sensitivity of the method to parameter choices and dataset characteristics. With proper tuning (e.g., reset ratio 1%, frequency 5 epochs), the method might yield positive gains.
 
 ## 🗂️ Repository Structure
+
+```
 stock-reset-lstm/
-├── data/ # (empty) place for CSV datasets
-├── experiments/ # main experiment script (main_stock.py)
-├── src/ # core modules
-│ ├── data_loader.py # download & preprocess stock data
-│ ├── model.py # LSTM + periodic reset logic
-│ └── utils.py # metrics, visualization
-├── dashboard/ # Streamlit interactive dashboard
-│ └── app.py
-├── results/ # output CSV and plots (auto-generated)
-├── requirements.txt # Python dependencies
+├── data/                     # (empty) place for CSV datasets
+├── experiments/              # main experiment script (main_stock.py)
+├── src/                      # core modules
+│   ├── data_loader.py        # download & preprocess stock data
+│   ├── model.py              # LSTM + periodic reset logic
+│   └── utils.py              # metrics, visualization
+├── dashboard/                # Streamlit interactive dashboard
+│   └── app.py
+├── results/                  # output CSV and plots (auto-generated)
+├── requirements.txt          # Python dependencies
 ├── .gitignore
 └── README.md
-
+```
 
 ## 🚀 Getting Started
 
@@ -40,68 +42,69 @@ stock-reset-lstm/
 ```bash
 git clone https://github.com/afiqandico13/stock-reset-lstm.git
 cd stock-reset-lstm
+```
 
 ### 2. Create a virtual environment and install dependencies
-bash
+```bash
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
 # or
 venv\Scripts\activate       # Windows
 
 pip install -r requirements.txt
+```
 
-3. Run the main experiment
-bash
+### 3. Run the main experiment
+```bash
 cd experiments
 python main_stock.py
+```
+
 This will download AAPL stock data (2020–2024), inject a synthetic drift at 70% of the series, and compare baseline vs periodic reset LSTM over 30 bootstrap iterations.
 
-4. Launch the interactive dashboard
-bash
+### 4. Launch the interactive dashboard
+```bash
 streamlit run dashboard/app.py
+```
+
 The dashboard lets you choose any ticker, adjust reset parameters, and see predictions in real time.
 
-📈 Visual Results
-https://results/boxplot_stock.png
-Boxplot of MSE over 30 iterations – baseline vs proposed.
+## 📈 Visual Results
 
-🧠 Key Parameters
-Parameter	Value	Rationale
-Reset ratio	3%	Small enough to avoid catastrophic forgetting, adjustable
-Reset frequency	every 15 epochs	One reset in a 20‑epoch training
-LSTM hidden size	32	Lightweight, runs on CPU
-Window size	5 days	Uses one week of past prices
-🌐 Live Demo
-Try the interactive dashboard online (after Streamlit Cloud deployment):
-https://static.streamlit.io/badges/streamlit_badge_black_white.svg
+![Boxplot](results/boxplot_stock.png)
 
-No installation required – just click the badge!
+*Boxplot of MSE over 30 iterations – baseline vs proposed.*
 
-📜 License
-This project is licensed under the MIT License – see the LICENSE file for details.
+## 🧠 Key Parameters
 
-🙏 Acknowledgements
-Inspired by Newton’s law of inertia and Kuppens et al. (2010) on emotional inertia.
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| Reset ratio | 3% | Small enough to avoid catastrophic forgetting, adjustable |
+| Reset frequency | every 15 epochs | One reset in a 20‑epoch training |
+| LSTM hidden size | 32 | Lightweight, runs on CPU |
+| Window size | 5 days | Uses one week of past prices |
 
-Stock data from Yahoo Finance (yfinance library).
+## 📜 License
 
-Built with PyTorch, Streamlit, and scikit-learn.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
-📧 Contact
-For questions or collaboration, please open an issue on GitHub.
+## 🙏 Acknowledgements
 
-text
+- Inspired by Newton’s law of inertia and Kuppens et al. (2010) on emotional inertia.
+- Stock data from Yahoo Finance (yfinance library).
+- Built with PyTorch, Streamlit, and scikit-learn.
 
 ---
 
-## 🔧 Cara Menggunakan README Ini
+**📧 Contact**  
+For questions or collaboration, please open an issue on GitHub.
+```
 
+**Cara pakai:**
 1. Buka repositori `stock-reset-lstm` di GitHub.
-2. Klik file `README.md` → ikon pensil (edit).
-3. Hapus semua isi yang ada.
-4. Tempel kode di atas.
-5. Ganti `https://your-app-url.streamlit.app` dengan URL asli dashboard Anda setelah di‑deploy (atau hapus badge jika belum deploy).
-6. Klik **Commit changes**.
+2. Klik `README.md` → ikon pensil (edit).
+3. Hapus semua isi lama.
+4. **Tempel kode di atas**.
+5. Klik **Commit changes**.
 
-Selesai! README Anda kini profesional dan informatif. 🚀
-
+Hasilnya akan rapi seperti halaman GitHub pada umumnya. 🚀
