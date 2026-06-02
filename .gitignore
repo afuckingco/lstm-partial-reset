@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+env/
+*.so
+*.egg
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Data & Results
+data/*.csv
+!data/README.md
+results/*.csv
+results/*.png
+*.log
+
+# Temporary files
+*.tmp
+~$*
