@@ -1,4 +1,3 @@
-```markdown
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CPU-orange)](https://pytorch.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -19,6 +18,7 @@ This repository implements **periodic partial reset** on LSTM to handle **sudden
 > ⚠️ On this synthetic drift scenario, the periodic reset did **not** improve performance. This negative result is still valuable – it highlights the sensitivity of the method to parameter choices and dataset characteristics. With proper tuning (e.g., reset ratio 1%, frequency 5 epochs), the method might yield positive gains.
 
 ## 🗂️ Repository Structure
+
 
 ```
 stock-reset-lstm/
@@ -83,6 +83,12 @@ The dashboard lets you choose any ticker, adjust reset parameters, and see predi
 | Reset frequency | every 15 epochs | One reset in a 20‑epoch training |
 | LSTM hidden size | 32 | Lightweight, runs on CPU |
 | Window size | 5 days | Uses one week of past prices |
+
+## 🌐 Live Demo
+Try the interactive dashboard online (after Streamlit Cloud deployment):
+https://static.streamlit.io/badges/streamlit_badge_black_white.svg
+
+No installation required – just click the badge!
 
 ## 📜 License
 
