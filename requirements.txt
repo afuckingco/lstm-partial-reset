@@ -2,9 +2,8 @@ numpy
 pandas
 torch
 scikit-learn
-scipy
 matplotlib
 seaborn
 tqdm
-streamlit
-plotly
+plotly>=5.24.0
+streamlit>=1.35.0
