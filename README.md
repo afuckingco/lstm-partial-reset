@@ -99,12 +99,3 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 **📧 Contact**  
 For questions or collaboration, please open an issue on GitHub.
 ```
-
-**Cara pakai:**
-1. Buka repositori `stock-reset-lstm` di GitHub.
-2. Klik `README.md` → ikon pensil (edit).
-3. Hapus semua isi lama.
-4. **Tempel kode di atas**.
-5. Klik **Commit changes**.
-
-Hasilnya akan rapi seperti halaman GitHub pada umumnya. 🚀
