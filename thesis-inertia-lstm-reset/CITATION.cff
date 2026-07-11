@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: Periodic Partial Reset on LSTM for Concept Drift in Stress Prediction
+message: If you use this software in your research, please cite it using these metadata.
+type: software
+authors:
+  - family-names: Andico
+    given-names: Afiq
+    orcid: https://orcid.org/ (optional, isi jika punya)
+repository-code: https://github.com/afiqandico13/thesis-inertia-lstm-reset
+url: https://github.com/afiqandico13/thesis-inertia-lstm-reset
+abstract: "Implementation of periodic partial reset on LSTM to improve adaptation to sudden concept drift in stress prediction. Includes synthetic data experiment and real‑data validation (Student Lifestyle dataset), plus interactive Streamlit dashboard."
+keywords:
+  - concept drift
+  - LSTM
+  - partial reset
+  - stress prediction
+  - mental health
+license: MIT
+date-released: 2025-06-01

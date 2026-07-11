@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+~$*
+
+# Dataset (optional, jika file CSV besar tidak ingin diupload)
+data/*.csv
+!data/README.md
+
+# Results (optional, gambar boleh, CSV mungkin tidak perlu)
+# results/*.csv
