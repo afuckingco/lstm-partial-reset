@@ -40,7 +40,7 @@ stock-reset-lstm/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/afiqandico13/stock-reset-lstm.git
+git clone https://github.com/afuckingco/stock-reset-lstm.git
 cd stock-reset-lstm
 ```
 
