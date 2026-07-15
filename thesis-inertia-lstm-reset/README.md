@@ -47,7 +47,7 @@ thesis-inertia-lstm-reset/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/afiqandico13/thesis-inertia-lstm-reset.git
+git clone https://github.com/afuckingco/thesis-inertia-lstm-reset.git
 cd thesis-inertia-lstm-reset
 ```
 
@@ -134,7 +134,7 @@ For questions or collaboration opportunities, please open an issue on GitHub.
 ```
 
 **Cara menggunakannya:**
-1. Buka repositori GitHub Anda: `https://github.com/afiqandico13/thesis-inertia-lstm-reset`
+1. Buka repositori GitHub Anda: `https://github.com/afuckingco/thesis-inertia-lstm-reset`
 2. Klik file `README.md`
 3. Klik ikon pensil (✏️) untuk edit
 4. Hapus semua konten lama, lalu paste kode di atas

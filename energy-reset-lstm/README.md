@@ -31,7 +31,7 @@ energy-reset-lstm/
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/afiqandico13/energy-reset-lstm.git
+git clone https://github.com/afuckingco/energy-reset-lstm.git
 cd energy-reset-lstm
 pip install -r requirements.txt
 python experiments/main_energy.py
